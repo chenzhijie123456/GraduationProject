@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+@using Models;
+@{
+    Heroes heroes = ViewBag.hero;
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <h1>更新英雄</h1>
+    @using (Html.BeginForm("Edit"))
+    {
+
+        <input type="hidden" value="@heroes.Id" />
+        <div>
+            <label>姓名：</label>
+            <input type="text" value="@heroes.Name" name="Name" />
+        </div>
+
+        <div>
+            <label>图片：</label>
+            <input type="text" value="@heroes.Photo" name="Photo" />
+        </div>
+
+        <div>
+            <label>Q币：</label>
+            <input type="text" value="@heroes.Q_Coin" name="Q_Coin" />
+        </div>
+
+        <div>
+            <label>微信：</label>
+            <input type="text" value="@heroes.Weixin" name="Weixin" />
+        </div>
+
+        <div>
+            <input type="submit" value="提交" />
+        </div>
+    }
+</body>
+</html>

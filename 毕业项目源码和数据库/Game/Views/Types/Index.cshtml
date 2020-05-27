@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    var menu = "menu";
+}
+@model List<Models.Type>
+<ul style="list-style:none">
+    @foreach (var item in Model.Where(p => p.PID == null))
+    {
+        <li data-toggle="collapse" data-target="#@menu@item.ID" dataValue="@item.ID" onclick="FindChildren(this)">
+            <input type="checkbox" />@item.TypeName
+            <div id="@menu@item.ID" class="collapse">
+                @foreach (var item1 in Model.Where(p => p.PID == item.ID))
+                {
+                    <p style="text-indent:2em;">@item1.TypeName</p>
+                }
+            </div>
+
+        </li>
+    }
+</ul>
+
+
+@section scripts{
+    <script type="text/javascript">
+        function FindChildren(a) {
+            var value = $(a).attr("dataValue");
+            $.ajax({
+                type: "post",
+                async: true,
+                url: "/Types/FindChildren",
+                dataType:"Json",
+                data: {
+                    "Pid": value
+                },
+                success: function (data) {
+                    console.log(data);
+                }
+            })
+        }
+    </script>
+}
+

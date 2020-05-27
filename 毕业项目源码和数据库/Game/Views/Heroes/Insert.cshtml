@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <h1>新增英雄</h1>
+    @using (Html.BeginForm())
+    {
+        <div>
+            <label>姓名：</label>
+            @Html.TextBox("Name")
+        </div>
+
+        <div>
+            <label>图片：</label>
+            @Html.TextBox("Photo")
+        </div>
+
+        <div>
+            <label>Q币：</label>
+            @Html.TextBox("Q_Coin")
+        </div>
+
+        <div>
+            <label>微信：</label>
+            @Html.TextBox("Weixin")
+        </div>
+
+        <div>
+            <input type="submit" value="提交" />
+        </div>
+    }
+</body>
+</html>

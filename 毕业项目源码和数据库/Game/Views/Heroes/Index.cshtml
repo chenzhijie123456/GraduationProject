@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@using Models;
+@{
+    List<Heroes> herros = ViewBag.hero;
+}
+
+
+<h3><a href="~/LOL/Insert">新增</a></h3>
+
+<table class="table-bordered table-hover">
+    <tr>
+        <th>图片</th>
+        <th>编号</th>
+        <th>名字</th>
+        <th>Q币</th>
+        <th>微信</th>
+        <th>操作</th>
+    </tr>
+    @foreach (var item in herros)
+    {
+        <tr>
+
+            <td><img src="~/Content/images（net机试素材）/@item.Photo" width="100" height="50"></td>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Q_Coin</td>
+            <td>@string.Format("{0:C}", item.Weixin)</td>
+            <td>
+                <a href="/LOL/Edit/@item.Id" class="btn-primary">编辑</a>
+                <a href="/LOL/Delete/@item.Id" onclick="return confirm('你确定要删除嘛？')" class="btn-danger">删除</a>
+            </td>
+        </tr>
+    }
+</table>
+
